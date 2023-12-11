@@ -1,0 +1,218 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: G8;
+  src:
+       url('/fonts/G8321GX.ttf') format('truetype');
+  font-weight: 100, 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+.bodybg{
+  background: linear-gradient(180deg, #FFBE48 0%, #FFAF3E 100%);
+}
+
+.filterbg{
+  border-radius: 12px;
+border: 1px solid #F0A724;
+background: #FFAE1C;
+}
+
+
+.custom-checkbox input {
+  display: none;
+}
+
+.custom-checkbox .checkedmark {
+  height: 20px;
+  width: 20px;
+  background-image: url('/filter/check.png');
+  cursor: pointer;
+  background-size: 100% 100%;
+
+}
+
+.custom-checkbox .uncheckedmark {
+  background-image: url('/filter/uncheck.png');
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
+  background-size: 100% 100%;
+}
+
+
+
+
+@media screen and (min-width: 600px) {
+  ::-webkit-scrollbar {
+    width: 0.15rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #FFFFFF;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(81, 202, 255, 0.56);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(81, 202, 255, 0.56);
+  }
+}
+
+@layer base {
+  :root {
+    --background: 198 43% 89%;
+    --foreground: 0 0% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 198 100% 71%;
+    --primary-foreground: 0 0 100%;
+
+    --secondary: 0 0 100% 0.25;
+    --secondary-foreground: 0 0% 15%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 0 0% 100%;
+    --accent-foreground: 0 0% 15%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 0 0% 100%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 198 100% 71%;
+
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  body {
+    @apply font-g8 text-foreground font-extrabold;
+  }
+  * {
+    @apply border-border;
+  }
+  .gradient {
+    background: linear-gradient(0deg, #eeeac8 0%, #eeeac8 100%);
+  }
+  .round > tr:first-child > td:first-child {
+    border-radius: 16px 0 0 0;
+  }
+  .round > tr:first-child > td:last-child {
+    border-radius: 0 16px 0 0;
+  }
+
+  .round > tr:last-child > td:first-child {
+    border-radius: 0 0 0 16px;
+  }
+  .round > tr:last-child > td:last-child {
+    border-radius: 0 0 16px 0;
+  }
+  .round-fixed > tr:last-child > td:first-child {
+    border-radius: 16px 0 0 16px;
+  }
+  .round-fixed > tr:last-child > td:last-child {
+    border-radius: 0 16px 16px 0;
+  }
+
+  .hex {
+    margin-top: 30px;
+    width: 104px;
+    height: 60px;
+    background-color: @color;
+    border-color: @color;
+    position: relative;
+    display: inline-block;
+  }
+  .hex:before {
+    content: " ";
+    width: 0;
+    height: 0;
+    border-bottom: 30px solid;
+    border-color: inherit;
+    border-left: 52px solid transparent;
+    border-right: 52px solid transparent;
+    position: absolute;
+    top: -30px;
+  }
+  .hex:after {
+    content: "";
+    width: 0;
+    position: absolute;
+    bottom: -30px;
+    border-top: 30px solid;
+    border-color: inherit;
+    border-left: 52px solid transparent;
+    border-right: 52px solid transparent;
+  }
+
+  .hourglass {
+    display: block;
+    margin: 0 0 8px 0;
+    background: #000;
+    width: 1em;
+    height: 1.5em;
+    animation: hourglass 1s linear infinite;
+  }
+
+  .outer {
+    fill: #fff;
+  }
+
+  .middle {
+    fill: #000000;
+  }
+
+  @keyframes hourglass {
+    0% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+      box-shadow: inset #fff 0 -0em 0 0, inset #000000 0 -0.75em 0 0,
+        inset #fff 0 -1.5em 0 0;
+    }
+    80% {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+      box-shadow: inset #fff 0 -0.75em 0 0, inset #000000 0 -0.75em 0 0,
+        inset #fff 0 -0.75em 0 0;
+    }
+    100% {
+      -webkit-transform: rotate(180deg);
+      transform: rotate(180deg);
+      box-shadow: inset #fff 0 -0.75em 0 0, inset #000000 0 -0.75em 0 0,
+        inset #fff 0 -0.75em 0 0;
+    }
+  }
+}
+
+html,body{
+  min-height: 100vh!important;
+  height: 100%;
+  background-color: #D7E8EF;
+}
+
+
+#app {
+  height: 100%;
+}
+
+@media(max-width: 1024px){
+  html{
+    overflow-y: hidden!important;
+  }
+}
+
+
