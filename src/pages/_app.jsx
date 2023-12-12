@@ -29,7 +29,7 @@ export default function App({ Component, pageProps: { session, ...pageProps } })
 <>
         <div 
         className={cn(
-          `max-h-screen  lg:w-full relative`
+          `lg:max-h-screen lg:h-screen lg:overflow-hidden overflow-y-auto h-full max-h-full lg:w-full relative`
         )}>
 
 
