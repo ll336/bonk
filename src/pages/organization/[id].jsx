@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import { Command } from "@/components/ui/command";
 import { AnimatePresence, motion } from "framer-motion";
 import NavBar from "@/components/layout/navbar";
-import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
@@ -273,9 +272,13 @@ export default function Organization() {
                             </p>
 
 
-                            <div className="border-[#E9E9E9] border-[2px]  rounded-[10px] w-full p-5 max-w-[550px]">
-                              <p className="text-[#757575] font-bold text-[13px]">Learn More</p>
+                            <div className="border-[#E9E9E9] border-[2px]  rounded-[10px] w-full px-5 py-4 max-w-full lg:max-w-[450px] mt-4">
+                              <p className="text-[#757575] font-bold text-[13px] mb-2">Learn More</p>
+                              <p className="text-[#757575] font-normal text-[13px] mb-1">Website:</p>
+                              <a href={details.website} target="_blank">
+                              <p className="text-[#0D99FF] font-normal text-[13px]">{details.website}</p>
 
+                              </a>
                             </div>
                           </div>
 
@@ -310,7 +313,9 @@ export default function Organization() {
                               </button>
                             </div>
                           </div>
+                        
                         </div>
+                 
                       </motion.div>
                     </>
                   )}
