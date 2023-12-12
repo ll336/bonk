@@ -250,7 +250,7 @@ export default function Shop() {
                             <>
                               {category.map((filter, index) => {
                                 return (
-                                <></>
+                                <div key={index}></div>
                                 );
                               })}
                             </>
