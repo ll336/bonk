@@ -11,7 +11,7 @@
   font-display: swap;
 }
 
-.bodybg{
+.bodybg, body{
   background: linear-gradient(180deg, #FFBE48 0%, #FFAF3E 100%);
 }
 
@@ -22,27 +22,6 @@ background: #FFAE1C;
 }
 
 
-.custom-checkbox input {
-  display: none;
-}
-
-.custom-checkbox .checkedmark {
-  height: 20px;
-  width: 20px;
-  background-image: url('/filter/check.png');
-  cursor: pointer;
-  background-size: 100% 100%;
-
-}
-
-.custom-checkbox .uncheckedmark {
-  background-image: url('/filter/uncheck.png');
-  height: 20px;
-  width: 20px;
-  cursor: pointer;
-  background-size: 100% 100%;
-}
-
 
 
 
@@ -52,15 +31,15 @@ background: #FFAE1C;
   }
 
   ::-webkit-scrollbar-track {
-    background: #FFFFFF;
+    background: #ffffff71;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: rgba(81, 202, 255, 0.56);
+    background: #F0A724;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: rgba(81, 202, 255, 0.56);
+    background: #F0A724;
   }
 }
 
