@@ -50,7 +50,7 @@ export default function Organization() {
       </Head>
       <div
         className={cn(
-          `h-screen font-g8 bodybg`
+          `lg:h-screen font-g8 bodybg`
         )}>
         <NavBar />
         <div className={`lg:px-12 pb-[38px] lg:pb-3 pt-4 w-full ${(windowSize.width > 1024 && windowSize.height <= 650) ? "lg:h-full" : "lg:h-[calc(100vh-112px)]"} flex flex-col relative`}>
