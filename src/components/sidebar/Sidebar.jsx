@@ -19,11 +19,11 @@ export default function Sidebar() {
     const [dropDown, setDropDown] = useState(false);
 
     return(
-        <div className=" flex-col justify-between items-center lg:h-[calc(100vh-162px)] xl:flex hidden">
-        <div className="filterbg py-6 border-[#F0A724] rounded-[12px]  w-[95%] overflow-hidden flex flex-col justify-between items-center h-full lg:w-[300px] 2xl:w-full">
-          <div className="flex flex-col h-full max-h-full overflow-y-auto w-full gap-4 lg:gap-0 flex-grow-0 opacity-50 mb-3 px-6">
+        <div className={`flex-col justify-between items-center ${(windowSize.width > 1024 && windowSize.height <= 650) ? "lg:h-full lg:min-h-[650px]" : "lg:h-[calc(100vh-162px)]"} xl:flex hidden`}>
+        <div className="filterbg py-6 border-[#F0A724] rounded-[12px]  w-[95%] overflow-hidden flex flex-col justify-between items-center h-full lg:w-[300px] 2xl:w-full ">
+          <div className="flex flex-col h-full max-h-full overflow-y-auto w-full gap-4 lg:gap-0 flex-grow-0 opacity-50 mb-3 px-6 ">
             <div className=" flex items-center justify-between whitespace-nowrap gap-[30px]  w-full ">
-              <Command className="lg:block rounded-lg border mb-4 bg-[#FFBD48] border-[#F0A724]">
+              <Command className="lg:block rounded-lg border mb-4 bg-[#FFBD48] border-[#F0A724] ">
                 <div
                   className="flex items-center px-5"
                   cmdk-input-wrapper=""

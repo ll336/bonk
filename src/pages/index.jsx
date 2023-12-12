@@ -28,6 +28,7 @@ export default function Home() {
   const windowSize = useWindowSize()
   const shouldApplyScroll = windowSize.height <= 900
 
+
   const handleSearchChange = (event) => {
     const inputValue = event.target.value;
     setSearchTerm(inputValue);
@@ -111,15 +112,15 @@ export default function Home() {
       </Head>
       <div
         className={cn(
-          `lg:h-screen font-g8 !h-full bodybg`
+          `lg:h-screen font-g8 h-full bodybg`
         )}>
         <NavBar />
-        <div className=" lg:px-12 pb-3 pt-4 w-full lg:h-[calc(100vh-112px)] flex flex-col relative">
+        <div className={` lg:px-12 pb-3 pt-4 w-full ${(windowSize.width > 1024 && windowSize.height <= 650) ? "lg:h-full" :  "lg:h-[calc(100vh-112px)]"}  flex flex-col relative`}>
           <div className="h-full w-full py-2 flex justify-between lg:flex-row flex-col">
             
-            <div className="flex flex-col justify-between items-center lg:h-[calc(100vh-162px)]">
+            <div className={`flex flex-col justify-between items-center ${(windowSize.width > 1024 && windowSize.height <= 650) ? "lg:h-full" : " lg:h-[calc(100vh-162px)]"}`}>
               <div className="filterbg py-6 border-[#F0A724] rounded-[12px] w-[95%] overflow-hidden flex flex-col justify-between items-center h-full lg:w-[300px] 2xl:w-full">
-                <div className="flex flex-col h-full max-h-full overflow-y-auto w-full gap-4 lg:gap-0 flex-grow-0  mb-3 px-6">
+                <div className="flex flex-col h-full max-h-full min-h-[300px] overflow-y-auto w-full gap-4 lg:gap-0 flex-grow-0  mb-3 px-6">
                   <div className=" flex items-center justify-between whitespace-nowrap gap-[30px]  w-full ">
                     <Command className="lg:block rounded-lg border mb-4 bg-[#FFBD48] border-[#F0A724]">
                       <div
@@ -306,7 +307,7 @@ export default function Home() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1 }}
-                    className="py-3 px-6 grid xs:grid-cols-1 grid-cols-2 sm:grid-cols-3 xl:grid-cols-3  3xl:grid-cols-4 gap-5 gap-y-6 pb-[30px]">
+                    className="py-3 px-6 grid grid-cols-1  sm:grid-cols-3 xl:grid-cols-3  3xl:grid-cols-4 gap-5 gap-y-6 pb-[30px]">
                     {filteredData && filteredData.length > 0 && (
                       <>
                         {filteredData.map((item, index) => (

@@ -2,7 +2,7 @@
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import NavBar from "@/components/layout/navbar";
-import { cn } from "@/lib/utils";
+import { cn, useWindowSize } from "@/lib/utils";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
@@ -15,7 +15,7 @@ import Sidebar from "@/components/sidebar/Sidebar";
 export default function Organization() {
   const router = useRouter();
   const [details, setDetails] = useState();
-
+  const windowSize = useWindowSize()
 
   useEffect(() => {
     const data = filteredDatas.find((item) => item.id == router.query.id);
@@ -52,11 +52,11 @@ export default function Organization() {
           `lg:h-screen font-g8 !h-full bodybg`
         )}>
         <NavBar />
-        <div className=" lg:px-12 pb-3 pt-4 w-full lg:h-[calc(100vh-112px)] flex flex-col relative">
+        <div className={`lg:px-12 pb-3 pt-4 w-full ${(windowSize.width > 1024 && windowSize.height <= 650) ? "lg:h-full" : "lg:h-[calc(100vh-112px)]"} flex flex-col relative`}>
           <div className="h-full w-full py-2 flex justify-between lg:flex-row flex-col">
            <Sidebar />
-            <div className="h-full rounded-2xl w-full overflow-x-hidden lg:overflow-hidden px-6">
-              <div className="w-full flex flex-col h-full  lg:pb-4 lg:mb-5">
+            <div className={`h-full rounded-2xl w-full overflow-x-hidden lg:overflow-hidden px-6 ${(windowSize.width > 1024 && windowSize.height <= 650) && "min-h-[650px]"}`}>
+              <div className="w-full flex flex-col h-full  lg:pb-4 lg:mb-5 ">
                 <div className="flex justify-start items-center flex-grow-0 max-h-full max-w-full gap-3 pb-2 ">
                   <div className="flex justify-start items-center flex-grow-0 max-w-full">
                     <RiArrowLeftSLine
@@ -73,11 +73,11 @@ export default function Organization() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ duration: 1 }}
-                  className="w-full bg-white rounded-[12px] flex-grow"
+                  className="w-full bg-white rounded-[12px] flex-grow h-full"
                 >
                   {details && (
                     <>
-                      <motion.div className="bg-white p-10 rounded-[12px] flex flex-col flex-grow h-full">
+                      <motion.div className="bg-white p-10 rounded-[12px] flex flex-col flex-grow h-full ">
                         <p className="text-[#4D4D4D] text-[20px] lg:text-[22px] xl:text-[26px] leading-7 lg:leading-10 mb-2">
                           {details.name}
                         </p>
