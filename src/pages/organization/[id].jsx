@@ -50,10 +50,10 @@ export default function Organization() {
       </Head>
       <div
         className={cn(
-          `lg:h-screen font-g8 !h-full bodybg`
+          `h-screen font-g8 bodybg`
         )}>
         <NavBar />
-        <div className={`lg:px-12 pb-3 pt-4 w-full ${(windowSize.width > 1024 && windowSize.height <= 650) ? "lg:h-full" : "lg:h-[calc(100vh-112px)]"} flex flex-col relative`}>
+        <div className={`lg:px-12 pb-[38px] lg:pb-3 pt-4 w-full ${(windowSize.width > 1024 && windowSize.height <= 650) ? "lg:h-full" : "lg:h-[calc(100vh-112px)]"} flex flex-col relative`}>
           <div className="h-full w-full py-2 flex justify-between lg:flex-row flex-col">
            <Sidebar />
             <div className={`h-full rounded-2xl w-full overflow-x-hidden lg:overflow-hidden px-6 ${(windowSize.width > 1024 && windowSize.height <= 650) && "min-h-[650px]"}`}>
