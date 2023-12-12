@@ -56,7 +56,7 @@ export default function Organization() {
         <div className={`lg:px-12 pb-[38px] lg:pb-3 pt-4 w-full ${(windowSize.width > 1024 && windowSize.height <= 730) ? "lg:h-full" : "lg:h-[calc(100vh-112px)]"} flex flex-col relative`}>
           <div className="h-full w-full py-2 flex justify-between lg:flex-row flex-col">
            <Sidebar />
-            <div className={`h-full rounded-2xl w-full overflow-x-hidden lg:overflow-hidden px-6 ${(windowSize.width > 1024 && windowSize.height <= 730) && "min-h-[730px]"}`}>
+            <div className={`h-full rounded-2xl w-full overflow-x-hidden overflow-hidden px-6 ${(windowSize.width > 1024 && windowSize.height <= 730) && "min-h-[730px]"}`}>
               <div className="w-full flex flex-col h-full  lg:pb-4 lg:mb-5 ">
                 <div className="flex justify-start items-center flex-grow-0 max-h-full max-w-full gap-3 pb-2 ">
                   <div className="flex justify-start items-center flex-grow-0 max-w-full">
