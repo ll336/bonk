@@ -299,7 +299,7 @@ export default function Home() {
                   </div>
                 </>
               ) : (
-                <ScrollArea className="w-full h-full lg:h-[calc(100vh-100px)]  lg:pb-4 lg:mb-5">
+                <ScrollArea className="w-full h-full pb-[38px] lg:h-[calc(100vh-100px)]  lg:pb-4 lg:mb-5">
                   <div className="flex justify-start items-center gap-3 px-6 pb-2">
                   <span className="text-[26px] font-bold uppercase text-white">Charity</span>
                   <hr className="bg-[#FFFFFF] my-3 h-[1px] w-full" />
