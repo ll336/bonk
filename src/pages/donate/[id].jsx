@@ -214,7 +214,7 @@ export default function Donate() {
                                 animate={{opacity:1 }}
                                 transition={{duration: 0.5}}
                                 className="absolute right-4 top-1/2 py-4 mb-0 -translate-y-[50%] text-[#B8B8B8] font-[500] text-[14px] ">
-                                ≈ ${debouncedAmount * rate}
+                                ≈ ${(debouncedAmount * rate).toFixed(2)}
                                 </motion.p>
                                 
                                 }

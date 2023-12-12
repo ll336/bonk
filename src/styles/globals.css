@@ -15,8 +15,8 @@
   background: linear-gradient(180deg, #FFBE48 0%, #FFAF3E 100%);
 }
 
-body{
-  overflow-y: hidden;
+body, html{
+  overflow-y: hidden!important;
 }
 
 .filterbg{
@@ -190,12 +190,6 @@ html,body{
 
 #app {
   height: 100%;
-}
-
-@media(max-width: 1024px){
-  html{
-    overflow-y: hidden!important;
-  }
 }
 
 
