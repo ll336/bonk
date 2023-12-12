@@ -12,13 +12,13 @@ export default function App({ Component, pageProps: { session, ...pageProps } })
   return (
     <>
       <div 
-        className={cn(
-          "h-screen",
+        className={`
+          "h-screen ${
           (windowSize.height <= 650 && windowSize.width > 1024) 
             ? "!overflow-y-auto" 
-            : "lg:max-h-screen lg:overflow-hidden",
-          "overflow-y-auto max-h-full lg:w-full relative"
-        )}>
+            : "lg:max-h-screen lg:overflow-hidden"}
+          overflow-y-auto max-h-full lg:w-full"
+        `}>
         <Component {...pageProps} />
       </div>
       <ToastContainer />
