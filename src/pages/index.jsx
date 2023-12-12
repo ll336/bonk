@@ -149,7 +149,7 @@ export default function Shop() {
                         { block: openFilterMobile }
                       )}>
                       <div className="flex justify-between items-center">
-                        <span className="text-[18px] text-white">Charity</span>
+                        <span className="text-[16px] text-white">Charity</span>
                         <Image
                           src="/filter/filter.png"
                           width={20}
@@ -159,7 +159,7 @@ export default function Shop() {
                           priority="true"
                         />
                       </div>
-                      <Separator className=" my-3 lg:my-5 bg-[#E6E6E6]" />
+                      <Separator className=" my-3 lg:my-3 bg-[#E6E6E6]" />
                       {/* FILTERING OPTIONS */}
 
                       <div className="flex flex-col justify-between ">
@@ -189,10 +189,10 @@ export default function Shop() {
                                     <div className="custom-checkbox"  >
                                       {selectedType.includes(item.value)
                                       ?
-                                      <Image src="/filter/check.png" width={25} height={25} alt="/" />
-                                      :
-                                      
-                                      <Image src="/filter/uncheck.png" width={25} height={25} alt="/" />
+                                      <Image src="/filter/check.png" width={18} height={18} alt="/" />
+                                  :
+                                  
+                                  <Image src="/filter/uncheck.png" width={18} height={18} alt="/" />
                                       }
                                       
                                     </div>
@@ -209,9 +209,9 @@ export default function Shop() {
                   </div>
                 </div>
 
-                <div className="flex flex-col justify-between items-center mt-8 lg:mt-0 w-full flex-grow gap-14">
+                <div className="flex flex-col justify-between items-center mt-8 lg:mt-0 w-full flex-grow gap-5">
                 <div className="w-full flex flex-col px-6"> {/* Loaction dropdown */}
-                          <p className="text-[18px] text-white">Location</p>
+                          <p className="text-[16px] text-white">Location</p>
                           <div className="relative">
 
                 
@@ -241,8 +241,8 @@ export default function Shop() {
                   <div className="flex flex-col justify-center items-center">
                   <Image
                     src="/heart.png"
-                    width={60}
-                    height={60}
+                    width={40}
+                    height={40}
                     unoptimized="true"
                     priority="true"
                     alt="/"
