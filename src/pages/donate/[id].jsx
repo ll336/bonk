@@ -393,7 +393,7 @@ export default function Donate() {
                             disabled={anonymous}
                             type="text"
                             placeholder="First name*"
-                            className="w-full py-4 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
+                            className="w-full py-3 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
                             value={form.name}
                             onChange={(e) => {setForm({...form, name: e.target.value})}}
                           />
@@ -401,32 +401,20 @@ export default function Donate() {
                             disabled={anonymous}
                             type="text"
                             placeholder="Last name*"
-                            className="w-full py-4 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
+                            className="w-full py-3 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
                             value={form.lastname}
                             onChange={(e) => {setForm({...form, lastname: e.target.value})}}
                           />
                         
                         </div>
 
-                        <div className=" mt-4 flex justify-center gap-4">
-                          <input
-                            disabled={anonymous}
-                            type="text"
-                            placeholder="Email*"
-                            className="w-full py-4 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
-                            value={form.email}
-                            onChange={(e) => {setForm({...form, email: e.target.value})}}
-                          />
-                           
-                        
-                        </div>
 
                         <div className=" mt-4 flex justify-center gap-4">
                           <input
                             disabled={anonymous}
                             type="text"
                             placeholder="Address"
-                            className="w-full py-4 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
+                            className="w-full py-3 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
                             value={form.address}
                             onChange={(e) => {setForm({...form, address: e.target.value})}}
                           />
@@ -438,7 +426,7 @@ export default function Donate() {
                             disabled={anonymous}
                             type="text"
                             placeholder="Country*"
-                            className="w-full py-4 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
+                            className="w-full py-3 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
                             value={form.country}
                             onChange={(e) => {setForm({...form, country: e.target.value})}}
                           />
@@ -446,7 +434,7 @@ export default function Donate() {
                             disabled={anonymous}
                             type="text"
                             placeholder="State/Provin...*"
-                            className="w-full py-4 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
+                            className="w-full py-3 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
                             value={form.state}
                             onChange={(e) => {setForm({...form, state: e.target.value})}}
                           />
@@ -458,7 +446,7 @@ export default function Donate() {
                             disabled={anonymous}
                             type="text"
                             placeholder="City*"
-                            className="w-full py-4 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
+                            className="w-full py-3 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
                             value={form.city}
                             onChange={(e) => {setForm({...form, city: e.target.value})}}
                           />
@@ -477,9 +465,9 @@ export default function Donate() {
                         
                             type="text"
                             placeholder="Email"
-                            className="w-full py-4 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
-                            value={form.taxemail}
-                            onChange={(e) => {setForm({...form, taxemail: e.target.value})}}
+                            className="w-full py-3 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
+                            value={form.email}
+                            onChange={(e) => {setForm({...form, email: e.target.value})}}
                           />
                         
                         </div>
