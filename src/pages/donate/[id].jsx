@@ -165,7 +165,7 @@ export default function Donate() {
                   {details && (
                     <>
                       <motion.div className="bg-white p-4 lg:p-5 py-7 rounded-[12px] flex flex-col flex-grow h-full">
-                        <p className="text-[#4D4D4D] text-[18px] lg:text-[18px] xl:text-[18px] leading-7 lg:leading-10 mb-2">
+                        <p className="text-[#4D4D4D] text-[18px] lg:text-[16px] xl:text-[16px] leading-7 lg:leading-10">
                           {details.name}
                         </p>
 
@@ -206,30 +206,18 @@ export default function Donate() {
                               <p className="text-[#B8B8B8]">Start Over</p>
                             </div>
                           </div>
-                          <div className="w-full border-[#EBEBEB] rounded-[11px] border-[2px] h-full px-2 py-3 lg:px-5 lg:py-5  flex flex-col justify-start ">
-                            {/* <div className="flex justify-start items-center gap-4">
-                              <Image
-                                src="/donate/1-1.png"
-                                width={28}
-                                height={28}
-                                alt="/"
-                                unoptimized
-                                priority
-                              />
-                              <p className="text-[#4D4D4D]  text-[14px] whitespace-nowrap lg:text-[16px]">
-                                Select a currency
-                              </p>
-                            </div> */}
-                            <div className="bg-[#FFFFFF] rounded-[11px] p-2  w-full flex justify-center items-center border-[#F7F7F7] border-[3px] max-h-[46px]">
+                          <div className="w-full border-[#EBEBEB] rounded-[11px] border-[2px] h-full px-2 py-3 lg:px-5 lg:py-3  flex flex-col justify-start ">
+                            
+                            <div className="bg-[#FFFFFF] rounded-[11px] p-2  w-full flex justify-center gap-2 items-center border-[#F7F7F7] border-[3px] max-h-[46px]">
                               <Image
                                 src="/solana.png"
-                                width={32}
-                                height={32}
+                                width={25}
+                                height={25}
                                 alt="/"
                                 unoptimized
                                 priority
                               />
-                              <p className="text-[#4C81FF] text-[14px] font-bold">
+                              <p className="text-[#4C81FF] text-[13px] font-bold">
                                 Solana
                               </p>
                             </div>
@@ -238,7 +226,7 @@ export default function Donate() {
                               <input
                                 disabled={inputDisable}
                                 type="text"
-                                className="w-full py-4 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[14px] bg-[#F7F7F7] placeholder:text-[#4D4D4D]"
+                                className="w-full py-2 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[14px] bg-[#F7F7F7] placeholder:text-[#4D4D4D]"
                                 value={amount}
                                 onChange={(e) => handleChange(e)}
                               />
