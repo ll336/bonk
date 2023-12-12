@@ -126,7 +126,7 @@ export default function Donate() {
         )}>
         <NavBar />
         <div
-          className={`lg:px-12 pb-3 pt-4 w-full h-full overflow-y-hidden ${
+          className={`lg:px-12 pb-3 pt-4 w-full h-full ${
             (windowSize.width > 1024 && windowSize.height <= 730)
               ? "lg:h-full"
               : "lg:h-[calc(100vh-112px)]"
@@ -135,7 +135,7 @@ export default function Donate() {
           <div className="h-full w-full py-2 flex justify-between lg:flex-row flex-col">
             <Sidebar />
             <div
-              className={`h-full rounded-2xl w-full overflow-x-hidden lg:overflow-hidden px-6 ${
+              className={`h-full rounded-2xl w-full overflow-x-hidden overflow-hidden px-6 ${
                 (windowSize.width > 1024 && windowSize.height <= 730)? "min-h-[730px]": ""}`}
             >
               <div className="w-full flex flex-col h-full  lg:pb-4 lg:mb-5">
