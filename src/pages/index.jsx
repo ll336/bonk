@@ -299,7 +299,7 @@ export default function Home() {
                   </div>
                 </>
               ) : (
-                <ScrollArea className="w-full h-full pb-[38px] lg:h-[calc(100vh-100px)]  lg:pb-4 lg:mb-5">
+                <ScrollArea className={`w-full h-full pb-[38px] lg:h-[calc(100vh-100px)]  lg:pb-4 lg:mb-5 ${(windowSize.width > 1024 && windowSize.height <= 650) && "min-h-[650px]"}`}>
                   <div className="flex justify-start items-center gap-3 px-6 pb-2">
                   <span className="text-[26px] font-bold uppercase text-white">Charity</span>
                   <hr className="bg-[#FFFFFF] my-3 h-[1px] w-full" />
@@ -314,7 +314,7 @@ export default function Home() {
                         {filteredData.map((item, index) => (
                           <motion.div
                           onClick={() => router.push(`/organization/${item.id}`)}
-                         /*    whileHover={{
+                            whileHover={{
                               y: -5.5,
                               transition: { duration: 0.2 },
                             }}
@@ -323,7 +323,7 @@ export default function Home() {
                             }}
                             onHoverEnd={() => {
                               setSelected(null);
-                            }} */
+                            }}
                             className="bg-white p-5 rounded-[12px] relative cursor-pointer"
                             key={item.id}>
                             <div className="flex justify-center w-full">
