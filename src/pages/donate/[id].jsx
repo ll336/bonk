@@ -12,13 +12,16 @@ import Sidebar from "@/components/sidebar/Sidebar";
 
 export default function Donate() {
   const router = useRouter();
+  const [threshold, setThreshold] = useState(0.4)
   const [details, setDetails] = useState();
   const [amount, setAmount] = useState(0);
   const [inputDisable, setInputDisable] = useState(false);
   const [loading, setLoading] = useState(false);
   const [debouncedAmount, setDebouncedAmount] = useState(amount);
   const [rate, setRate] = useState(0);
+  const [bonk, setBonk] = useState(0)
   const windowSize = useWindowSize();
+  const [tab, setTab] = useState(1)
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -41,6 +44,7 @@ export default function Donate() {
     if (debouncedAmount && debouncedAmount !== 0) {
       setInputDisable(true);
       setLoading(true);
+      
 
       const fetchData = async () => {
         try {
@@ -59,8 +63,29 @@ export default function Donate() {
           setInputDisable(false);
         }
       };
+      const fetchBonk = async () => {
+        try {
+          const res = await fetch(
+            `https://api.coingecko.com/api/v3/simple/price?ids=bonk&vs_currencies=usd`
+          );
+          const data = await res.json();
+          if (data) {
+            const bonk = data?.bonk?.usd
+            const covert = rate / bonk
+            const result = debouncedAmount * covert * 0.01
+            setBonk(result)
+          }
+        } catch (err) {
+          console.log(err);
+        }
+      };
+
+   
 
       fetchData();
+      if(debouncedAmount <= threshold){
+        fetchBonk()
+      }
     }
   }, [debouncedAmount]);
 
@@ -102,7 +127,7 @@ export default function Donate() {
         <NavBar />
         <div
           className={`lg:px-12 pb-3 pt-4 w-full ${
-            windowSize.width > 1024 && windowSize.height <= 650
+            windowSize.width > 1024 && windowSize.height <= 730
               ? "lg:h-full"
               : "lg:h-[calc(100vh-112px)]"
           } flex flex-col relative`}
@@ -112,8 +137,8 @@ export default function Donate() {
             <div
               className={`h-full rounded-2xl w-full overflow-x-hidden lg:overflow-hidden px-6 ${
                 windowSize.width > 1024 &&
-                windowSize.height <= 650 &&
-                "min-h-[650px]"
+                windowSize.height <= 730 &&
+                "min-h-[730px]"
               }`}
             >
               <div className="w-full flex flex-col h-full  lg:pb-4 lg:mb-5">
@@ -139,14 +164,14 @@ export default function Donate() {
                 >
                   {details && (
                     <>
-                      <motion.div className="bg-white p-10 py-7 rounded-[12px] flex flex-col flex-grow h-full">
-                        <p className="text-[#4D4D4D] text-[20px] lg:text-[22px] xl:text-[26px] leading-7 lg:leading-10 mb-2">
+                      <motion.div className="bg-white p-4 lg:p-5 py-7 rounded-[12px] flex flex-col flex-grow h-full">
+                        <p className="text-[#4D4D4D] text-[18px] lg:text-[18px] xl:text-[18px] leading-7 lg:leading-10 mb-2">
                           {details.name}
                         </p>
 
                         <hr className="bg-[#E9E9E9] my-2 h-[2px] w-full" />
 
-                        <div className="grid  grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-5 h-full">
+                        <div className="grid  grid-cols-1 xl:grid-cols-2 2xl:grid-cols-2 gap-5 h-full">
                           <div className="flex flex-col gap-5 lg:gap-10">
                             <div className="flex justify-start gap-4 pt-10">
                               <Image
@@ -181,7 +206,7 @@ export default function Donate() {
                               <p className="text-[#B8B8B8]">Start Over</p>
                             </div>
                           </div>
-                          <div className="w-full border-[#EBEBEB] rounded-[11px] border-[2px] h-full p-5">
+                          <div className="w-full border-[#EBEBEB] rounded-[11px] border-[2px] h-full px-2 py-3 lg:px-5 lg:py-5  flex flex-col justify-start ">
                             <div className="flex justify-start items-center gap-4">
                               <Image
                                 src="/donate/1-1.png"
@@ -191,7 +216,7 @@ export default function Donate() {
                                 unoptimized
                                 priority
                               />
-                              <p className="text-[#4D4D4D]">
+                              <p className="text-[#4D4D4D]  text-[14px] whitespace-nowrap lg:text-[16px]">
                                 Select a currency
                               </p>
                             </div>
@@ -232,22 +257,66 @@ export default function Donate() {
 
                             <div className="bg-[#F7F7F7] mt-4 rounded-[11px] p-5  w-full flex justify-start items-center border-[#F7F7F7] border-[3px]">
                               <div className="flex flex-col gap-3 w-full">
-                                <p className="text-[#4D4D4D] text-[14px] font-bold">
+                                <p className="text-[#4D4D4D] text-[12px] lg:text-[14px] font-bold whitespace-nowrap">
                                   Donation Summary
                                 </p>
 
                                 <div className="flex justify-between items-center w-full">
-                                  <p className="text-[#4D4D4D] text-[14px] font-medium">
+                                  <p className="text-[#4D4D4D]  text-[12px] lg:text-[14px] font-medium">
                                     Donation Summary
                                   </p>
-                                  <p className="text-[#4D4D4D] text-[14px] font-medium">
+                                  <p className="text-[#4D4D4D]  text-[12px] lg:text-[14px] font-medium">
                                     {debouncedAmount} SOL
                                   </p>
                                 </div>
+                                {Number(debouncedAmount) <= Number(threshold) && Number(debouncedAmount) !== 0
+                                &&
+                                <>
+                                    <div className="flex justify-between items-center w-full">
+                                  <p className="text-[#4D4D4D]  text-[12px] lg:text-[14px] font-medium">
+                                    Burn
+                                  </p>
+                                  <p className="text-[#FE0B37]  text-[12px] lg:text-[14px] font-medium">
+                                  ≈ -{bonk.toFixed(2)} BONK
+                                  </p>
+                                </div>
+                                </>
+                            
+                                
+                                
+                                }
+                                <hr className="h-[2px] my-2 bg-[#EBEBEB] text-[#EBEBEB]"/>
+                                <div className="flex justify-between items-center w-full">
+                                  <p className="text-[#4D4D4D]  text-[12px] lg:text-[14px] font-bold">
+                                  Charity Recieving
+                                  </p>
+                                  <p className="text-[#4D4D4D]  text-[12px] lg:text-[14px] font-medium">
+                                    {debouncedAmount} SOL
+                                  </p>
+                                </div>
+
+                            
+                                
                               </div>
                             </div>
+                            <div className="w-full py-5">
+                                    <p className="text-[#B8B8B8] text-[12px] font-normal">The smart contract will burn 1% of the value of the user's donation from the BONK pool to support token deflation.</p>
+{/*                                     <p className="text-[#B8B8B8] text-[12px] font-normal  mt-3">If someone donates above a certain threshold, the smart contract matches that donation in BONK by swapping BONK into USDC/USDT on erc20 OR SOL on spl.</p>
+ */}
+                                    
+                                </div>
+
+                                <div className="flex justify-center">
+                                <button 
+                              onClick={() => router.push(`/donate/${router.query.id}`)}
+                              className="w-full bg-[#4C81FF] rounded-[10px] gap-3 py-3 my-4 text-white font-[500] flex justify-center items-center max-w-[300px]">
+                               
+                                <span>Next</span>
+                              </button>
+                                </div>
+                               
                           </div>
-                          <div className="lg:hidden flex"></div>
+                          
                         </div>
                       </motion.div>
                     </>
