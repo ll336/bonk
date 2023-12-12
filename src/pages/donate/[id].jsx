@@ -23,6 +23,7 @@ export default function Donate() {
   const [bonkMatch, setBonkMatch] = useState(0)
   const windowSize = useWindowSize();
   const [tab, setTab] = useState(1)
+  const [anonymous, setAnonymous] = useState(false)
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -167,7 +168,7 @@ export default function Donate() {
                         <div className="grid  grid-cols-1 lg:grid-cols-2 2xl:grid-cols-2 gap-5 h-full">
                           <div className="flex flex-col gap-5 lg:gap-10">
                             <div className="flex justify-start gap-4 pt-10">
-                            {tab == 1 ?
+                            {(tab == 1 || tab == 2 || tab == 3) ?
                             <Image
                             src="/donate/1-1.png"
                             width={24}
@@ -189,29 +190,57 @@ export default function Donate() {
                         
                         }
                               
-                              <p className={`${tab == 1 ? "text-[#4D4D4D]" : "text-[#B8B8B8]"}`}>
+                              <p className={`${(tab == 1 || tab == 2 || tab == 3) ? "text-[#4D4D4D]" : "text-[#B8B8B8]"}`}>
                                 Select a currency
                               </p>
                             </div>
                             <div className="flex justify-start gap-4">
-                              <Image
+                            {(tab == 2 || tab == 3) ?
+                            <Image
+                            src="/donate/2-2.png"
+                            width={24}
+                            height={24}
+                            alt="/"
+                            unoptimized
+                          />
+
+                          :
+
+                          <Image
                                 src="/donate/2.png"
                                 width={24}
                                 height={24}
                                 alt="/"
                                 unoptimized
                               />
-                              <p className="text-[#B8B8B8]">Personal Info</p>
+                        
+                        
+                        }
+                              <p className={`${(tab == 2 || tab == 3) ? "text-[#4D4D4D]" : "text-[#B8B8B8]"}`}>Personal Info</p>
                             </div>
                             <div className="flex justify-start gap-4">
-                              <Image
+                            {tab == 3 ?
+                            <Image
+                            src="/donate/3-3.png"
+                            width={24}
+                            height={24}
+                            alt="/"
+                            unoptimized
+                          />
+
+                          :
+
+                          <Image
                                 src="/donate/3.png"
                                 width={24}
                                 height={24}
                                 alt="/"
                                 unoptimized
                               />
-                              <p className="text-[#B8B8B8]">Start Over</p>
+                        
+                        
+                        }
+                              <p className={`${tab == 3 ? "text-[#4D4D4D]" : "text-[#B8B8B8]"}`}>Start Over</p>
                             </div>
                           </div>
                         
@@ -308,18 +337,19 @@ export default function Donate() {
                               </div>
                             </div>
                             <div className="w-full py-5">
-                                    <p className="text-[#B8B8B8] text-[10px] font-normal">The smart contract will burn 1% of the value of the user's donation from the BONK pool to support token deflation.</p>
-                                    <p className="text-[#B8B8B8] text-[10px] font-normal  mt-1">If a donor contributes $10 or more, the smart contract matches it in BONK, converting BONK to USDC/USDT on ERC20 or SOL on SPL.</p>
+                                    <p className="text-[#B8B8B8] text-[9px] font-normal">The smart contract will burn 1% of the value of the user&#39;s donation from the BONK pool to support token deflation.</p>
+                                    <p className="text-[#B8B8B8] text-[9px] font-normal  mt-1">If a donor contributes $10 or more, the smart contract matches it in BONK, converting BONK to USDC/USDT on ERC20 or SOL on SPL.</p>
 
                                     
                                 </div>
 
                                 <div className="flex justify-center">
                                 <button 
-                              onClick={() => setTab(2)}
-                              className="w-full bg-[#4C81FF] rounded-[10px] gap-3 py-3 my-1 text-white font-[500] flex justify-center items-center max-w-[300px]">
+                                disabled={debouncedAmount == 0 }
+                              onClick={() => {if(debouncedAmount > 0){setTab(2)}}}
+                              className={`${debouncedAmount == 0 && "opacity-50"} w-full bg-[#4C81FF] rounded-[10px] gap-3 py-3 text-white font-[500] flex justify-center items-center max-w-[300px]`}>
                                
-                                <span className="text-[13px]">Next</span>
+                                <span className="text-[11px]">Next</span>
                               </button>
                                 </div>
                                
@@ -329,21 +359,25 @@ export default function Donate() {
 
                         {tab == 2
                         &&
-                        <div className="w-full border-[#EBEBEB] rounded-[11px] border-[2px] h-full px-2 py-3 lg:px-5 lg:py-3  flex flex-col justify-start ">
+                        <motion.div 
+                        initial={{opacity:0}}
+                        animate={{opacity:1}}
+                        className="w-full border-[#EBEBEB] rounded-[11px] border-[2px] h-full px-2 py-3 lg:px-5 lg:py-3  flex flex-col justify-start ">
                             
-                        <div className="bg-[#FFFFFF] rounded-[11px] p-2  w-full flex justify-center gap-2 items-center border-[#F7F7F7] border-[3px] max-h-[46px]">
-                          <Image
-                            src="/solana.png"
-                            width={25}
-                            height={25}
-                            alt="/"
-                            unoptimized
-                            priority
-                          />
-                          <p className="text-[#4C81FF] text-[13px] font-bold">
-                            Solana
+                        <button 
+                        onClick={()=> setAnonymous(!anonymous)}
+                        className={`bg-[#FFFFFF] rounded-[11px] p-2  w-full flex justify-center gap-2 items-center ${anonymous ? "border-[#FFBD47]": "border-[#F7F7F7]"}  border-[1px] max-h-[46px]`}>
+                            {anonymous ?
+
+                            <Image src="/donate/antick.png" width={20} height={20} alt="/" unoptimized />
+                                :
+                                <Image src="/donate/unantick.png" width={20} height={20} alt="/" unoptimized />
+                            }
+
+                          <p className="text-[#4D4D4D] text-[13px] font-bold">
+                          Make donation anonymous
                           </p>
-                        </div>
+                        </button>
 
                         <div className="relative mt-4 ">
                           <input
@@ -414,7 +448,7 @@ export default function Donate() {
                           </div>
                         </div>
                         <div className="w-full py-5">
-                                <p className="text-[#B8B8B8] text-[10px] font-normal">The smart contract will burn 1% of the value of the user's donation from the BONK pool to support token deflation.</p>
+                                <p className="text-[#B8B8B8] text-[10px] font-normal">The smart contract will burn 1% of the value of the user&#39;s donation from the BONK pool to support token deflation.</p>
                                 <p className="text-[#B8B8B8] text-[10px] font-normal  mt-1">If a donor contributes $10 or more, the smart contract matches it in BONK, converting BONK to USDC/USDT on ERC20 or SOL on SPL.</p>
 
                                 
@@ -429,7 +463,7 @@ export default function Donate() {
                           </button>
                             </div>
                            
-                      </div>
+                      </motion.div>
                     
 
 
