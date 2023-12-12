@@ -111,7 +111,7 @@ export default function Home() {
       </Head>
       <div
         className={cn(
-          `h-screen font-g8 lg:overflow-y-hidden tallXS:!h-full bodybg overflow-y-auto `
+          `lg:h-screen font-g8 !h-full bodybg`
         )}>
         <NavBar />
         <div className=" lg:px-12 pb-3 pt-4 w-full lg:h-[calc(100vh-112px)] flex flex-col relative">
