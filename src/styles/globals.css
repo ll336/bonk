@@ -13,9 +13,8 @@
 
 .bodybg, body, html{
   background: linear-gradient(180deg, #FFBE48 0%, #FFAF3E 100%);
-  height: 100vh!important;
-  overflow-y: hidden;
-
+  min-height: 100vh!important;
+  height:100%!important;
 }
 
 
