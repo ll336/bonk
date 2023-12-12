@@ -168,7 +168,7 @@ export default function Donate() {
 
                         <hr className="bg-[#E9E9E9] my-2 h-[2px] w-full" />
 
-                        <div className="grid  grid-cols-1 lg:grid-cols-2 2xl:grid-cols-2 gap-2 lg:gap-5 h-full">
+                        <div className="grid  grid-cols-1 lg:grid-cols-2 2xl:grid-cols-2 gap-2 lg:gap-5 lg:h-full">
                           <div className="flex flex-col gap-5 lg:gap-10">
                             <div className="flex justify-start gap-4 pt-3 lg:pt-10">
                             {(tab == 1 || tab == 2 || tab == 3) ?
