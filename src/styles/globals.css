@@ -15,9 +15,6 @@
   background: linear-gradient(180deg, #FFBE48 0%, #FFAF3E 100%);
 }
 
-body, html{
-  overflow-y: hidden!important;
-}
 
 .filterbg{
   border-radius: 12px;
@@ -181,5 +178,10 @@ background: #FFAE1C;
   }
 }
 
+html,body{
+  min-height: 100vh!important;
+  height: 100%;
+  background-color: #D7E8EF;
+}
 
 
