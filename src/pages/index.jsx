@@ -314,7 +314,7 @@ export default function Home() {
                         {filteredData.map((item, index) => (
                           <motion.div
                           onClick={() => router.push(`/organization/${item.id}`)}
-                            whileHover={{
+                         /*    whileHover={{
                               y: -5.5,
                               transition: { duration: 0.2 },
                             }}
@@ -323,7 +323,7 @@ export default function Home() {
                             }}
                             onHoverEnd={() => {
                               setSelected(null);
-                            }}
+                            }} */
                             className="bg-white p-5 rounded-[12px] relative cursor-pointer"
                             key={item.id}>
                             <div className="flex justify-center w-full">
