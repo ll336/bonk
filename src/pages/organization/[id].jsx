@@ -122,7 +122,9 @@ export default function Organization() {
                                 </span>
                               </p>
 
-                              <button className="w-full bg-[#4C81FF] rounded-[10px] gap-3 py-3 my-4 text-white font-[500] flex justify-center items-center">
+                              <button 
+                              onClick={() => router.push(`/donate/${router.query.id}`)}
+                              className="w-full bg-[#4C81FF] rounded-[10px] gap-3 py-3 my-4 text-white font-[500] flex justify-center items-center">
                                 <Image
                                   src="/donatecoin.png"
                                   width={28}

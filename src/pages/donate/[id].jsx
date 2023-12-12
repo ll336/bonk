@@ -62,10 +62,10 @@ export default function Donate() {
                   <div className="flex justify-start items-center flex-grow-0 max-w-full">
                     <RiArrowLeftSLine
                       className="text-[28px] text-white cursor-pointer"
-                      onClick={() => router.push("/")}
+                      onClick={() => router.push(`/organization/${router.query.id}`)}
                     />
-                    <span className="text-[26px] font-bold uppercase text-white">
-                      Detail
+                    <span className="text-[26px] font-bold uppercase text-white whitespace-nowrap">
+                      Make a Donation
                     </span>
                   </div>
                   <hr className="bg-[#FFFFFF] my-3 h-[1px] w-full" />
@@ -85,56 +85,18 @@ export default function Donate() {
 
                         <hr className="bg-[#E9E9E9] my-5 h-[2px] w-full" />
 
-                        <div className="flex lg:flex-row flex-col justify-between items-start gap-5 xl:gap-20">
-                          <div className="flex-grow">
-                            <p
-                              className={`text-[13px] 2xl:text-[16px] font-normal text-[#AAA] mb-3`}
-                            >
-                              {details.description}
-                            </p>
-
-
-                            <div className="border-[#E9E9E9] border-[2px]  rounded-[10px] w-full px-5 py-4 max-w-full lg:max-w-[450px] mt-4">
-                              <p className="text-[#757575] font-bold text-[13px] mb-2">Learn More</p>
-                              <p className="text-[#757575] font-normal text-[13px] mb-1">Website:</p>
-                              <a href={details.website} target="_blank">
-                              <p className="text-[#0D99FF] font-normal text-[13px]">{details.website}</p>
-
-                              </a>
+                        <div className="grid  xl:grid-cols-3 gap-5 h-full">
+                            <div >
+                                dasdasdas
                             </div>
-                          </div>
-
-                          <div className="flex-grow-0 flex-shrink-0 max-h-full justify-center lg:w-fit w-full">
-                            <div className="border-[#E9E9E9] border-[2px] rounded-[12px]  py-7 px-5 w-full xl:min-w-[350px] flex flex-col justify-center items-center">
-                              <img
-                                src={details.logo}
-                                width={200}
-                                height={200}
-                                alt="/"
-                              />
-
-                              <hr className="bg-[#E9E9E9] my-3 h-[2px] w-full" />
-
-                              <p className="text-center text-[15px] 2xl:text-[18px] font-[500] text-[#4D4D4D]">
-                                Country:{" "}
-                                <span className="uppercase font-bold">
-                                  {details.country}
-                                </span>
-                              </p>
-
-                              <button className="w-full bg-[#4C81FF] rounded-[10px] gap-3 py-3 my-4 text-white font-[500] flex justify-center items-center">
-                                <Image
-                                  src="/donatecoin.png"
-                                  width={28}
-                                  height={28}
-                                  alt="/"
-                                  unoptimized
-                                  priority
-                                />
-                                <span>Donate Now</span>
-                              </button>
+                            <div className="w-full border-[#EBEBEB] rounded-[11px] border-[2px] h-full p-5">
+                    <div className="flex justify-start items-center gap-4">
+                    <Image src="/donate/1-1.png" width={28} height={28} alt="/" unoptimized priority />
+                                <p className="text-[#4D4D4D]">Select a currency</p>
+                    </div>
+                               
                             </div>
-                          </div>
+                            <div></div>
                         
                         </div>
                  
