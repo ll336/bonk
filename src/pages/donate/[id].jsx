@@ -4,38 +4,50 @@ import { motion } from "framer-motion";
 import NavBar from "@/components/layout/navbar";
 import { cn, useWindowSize } from "@/lib/utils";
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Head from "next/head";
 import { RiArrowLeftSLine } from "react-icons/ri";
 import { filteredDatas, categories } from "@/constants";
 import Sidebar from "@/components/sidebar/Sidebar";
+import { encodeURL, createQR } from '@solana/pay';
+import { IoCopy } from "react-icons/io5";
+import { PublicKey } from '@solana/web3.js';
 
 export default function Donate() {
+  const recipient = new PublicKey('9UejRas4nfxCdhF7c6h7zSPZo8pK8TuE7V2pN2A2qBsL');
+
+  const ref = useRef(null);
   const router = useRouter();
   const [threshold, setThreshold] = useState(0.4)
+  const [url, setUrl] = useState(null)
   const [details, setDetails] = useState();
   const [amount, setAmount] = useState(0);
   const [inputDisable, setInputDisable] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [debouncedAmount, setDebouncedAmount] = useState(amount);
+  const [debouncedAmount, setDebouncedAmount] = useState(0);
   const [rate, setRate] = useState(0);
   const [bonk, setBonk] = useState(0)
   const [bonkMatch, setBonkMatch] = useState(0)
   const windowSize = useWindowSize();
+  const [copy, setCopy] = useState(false)
   const [tab, setTab] = useState(1)
   const [anonymous, setAnonymous] = useState(false)
   const [errorBorder, setErrorBorder] = useState([])
   const [form, setForm] = useState({
     name: null,
     lastname:null,
-    email:null,
-    address:null,
+    email:"",
+    address:"",
     country: null,
     state:null,
     city:null
   })
 
-
+  useEffect(() => {
+    if (ref.current && url) {
+    const qrCode = createQR(url, 150);
+      qrCode.append(ref.current)
+    }
+  }, [url]);
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -94,6 +106,9 @@ export default function Donate() {
         
   
         if (Object.keys(errors).length === 0) {
+     
+          const encodeUrl = encodeURL({ recipient })
+          setUrl(encodeUrl)
           setTab(3)
         } 
     }else{
@@ -101,6 +116,9 @@ export default function Donate() {
             if (!/\S+@\S+\.\S+/.test(form.email) && form.email !== null && form.email) {
                 setErrorBorder(["email"])
               }else{
+                  
+          const encodeUrl = encodeURL({ recipient })
+          setUrl(encodeUrl)
                setTab(3)
               }
         
@@ -119,7 +137,6 @@ export default function Donate() {
   useEffect(() => {
     if (debouncedAmount && debouncedAmount !== 0) {
       setInputDisable(true);
-      setLoading(true);
       
       const fetchBonk = async () => {
         try {
@@ -129,7 +146,7 @@ export default function Donate() {
               const data = await res.json();
               if (data) {
                 setRate(Number(data?.solana?.usd));
-                setLoading(false);
+
                 setInputDisable(false);
 
                 const res1 = await fetch(
@@ -560,11 +577,31 @@ export default function Donate() {
                         <motion.div
                         initial={{opacity:0}}
                         animate={{opacity:1}}
-                        >
+                        className="w-full border-[#EBEBEB] rounded-[11px] border-[2px] h-full px-2 py-3 lg:px-5 lg:py-3 gap-3 flex flex-col justify-center items-center">
+                        <p className="text-[20px] font-bold text-[#4C81FF]">{debouncedAmount} SOL</p>
+                        <p className="text-[14px] font-normal text-[#585858] text-center">Use the address below to make donation from your wallet</p>
+                        
+                        <div ref={ref}></div>
+                            <div className="bg-[#F7F7F7] rounded-[11px] px-2 py-3 flex justify-between items-center w-full gap-2" >
+                            <p className="text-[12px] text-[#4D4D4D] break-all">{!copy ? <>9UejRas4nfxCdhF7c6h7zSPZo8pK8TuE7V2pN2A2qBsL</> : <>Copied</>}</p>
+                            <IoCopy className="text-[#4D4D4D] text-[23px] lg:flex hidden" onClick={() => {
+                                setCopy(true)
+                                navigator.clipboard.writeText("9UejRas4nfxCdhF7c6h7zSPZo8pK8TuE7V2pN2A2qBsL")
+                                setTimeout(() => {
+                                    setCopy(false)
+                                }, 800)
+                            }}/>
+                            </div>
 
-
-
-
+                            
+                            <p className="text-[12px] font-normal text-[#B8B8B8] text-center">Send only {debouncedAmount} SOL to this address. Sending other unsupported tokens or NFTs to this address may result in the loss of your donation. <br />An email will be sent on Txn Receipt</p>
+                            <button 
+                              onClick={() => {router.push(`/organization/${router.query.id}`)}}
+                              className={`w-full bg-[#4C81FF] rounded-[10px] gap-3 py-3 text-white font-[500] flex justify-center items-center max-w-[300px]`}>
+                               
+                                <span className="text-[11px]">Start over</span>
+                              </button>
+                        
                         </motion.div>
                         
                         
