@@ -275,7 +275,7 @@ export default function Home() {
                 </a>
               </div>
             </div>
-            <div className="h-screen rounded-2xl flex flex-grow flex-col w-full">
+            <div className="h-full rounded-2xl flex flex-grow flex-col w-full">
               {loading ? (
                 <>
                   <div className="flex justify-center items-center h-full w-full  my-20 lg:mt-0">
