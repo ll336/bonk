@@ -314,15 +314,21 @@ export default function Home() {
                         {filteredData.map((item, index) => (
                           <motion.div
                           onClick={() => router.push(`/organization/${item.id}`)}
-                            whileHover={{
+                            whileHover={windowSize.width > 1024 && {
                               y: -5.5,
                               transition: { duration: 0.2 },
                             }}
                             onHoverStart={() => {
-                              setSelected(item.id);
+                              if(windowSize.width > 1024){
+                                setSelected(item.id);
+                              }
+                              
                             }}
                             onHoverEnd={() => {
-                              setSelected(null);
+                              if(windowSize.width > 1024){
+                                setSelected(null);
+                              }
+                              
                             }}
                             className="bg-white p-5 rounded-[12px] relative cursor-pointer"
                             key={item.id}>
