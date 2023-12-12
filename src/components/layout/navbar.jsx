@@ -24,8 +24,8 @@ export default function NavBar({ page }) {
    animate={{y:0}}
    transition={{duration:0.5}}
    className="w-full flex justify-between items-center pt-8 pb-2 px-4 lg:px-12">
-    <Image src="/bonk.png" width={154} height={60} alt="/" unoptimized priority/>
-   
+    <Image src="/bonk.png" width={154} height={60} alt="/" unoptimized priority className="mobilesmall:hidden block"/>
+    <Image src="/loading.png" width={80} height={80} alt="/" unoptimized priority className="mobilesmall:block hidden"/>
     <div className="bg-white rounded-2xl py-[3px] px-4 flex justify-between items-center gap-5">
       <Image src="/bonk-avatar.png" width={37} height={52} alt="/" unoptimized priority />
 

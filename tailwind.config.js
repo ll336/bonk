@@ -15,6 +15,7 @@ module.exports = {
     extend: {
       screens: {
         xs: {raw: "(max-width:370px)"},
+        mobilesmall: {raw: "(max-width:670px)"},
         tallXS: { raw: "(max-height: 800px) and (min-width: 1024px)" },
         tallXL: { raw: "(min-height: 800px) and (min-width: 1024px)" },
         tall2XL: { raw: "(min-height: 873px) and (min-width: 1024px)" },
