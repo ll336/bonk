@@ -95,6 +95,7 @@ export default function Donate() {
         />
         <meta name="msapplication-TileColor" content="#6cd2ff" />
         <meta name="theme-color" content="#ffffff" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <div
         className={cn(

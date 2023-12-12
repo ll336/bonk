@@ -108,6 +108,7 @@ export default function Home() {
           href="/apple-touch-icon.png"
         />
         <meta name="msapplication-TileColor" content="#6cd2ff" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#ffffff" />
       </Head>
       <div
