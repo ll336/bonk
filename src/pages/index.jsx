@@ -358,7 +358,7 @@ export default function Shop() {
                               setSelected(null);
                             }}
                             className="bg-white p-5 rounded-[12px] relative"
-                            id={item.id}>
+                            key={item.id}>
                             <div className="flex justify-center w-full">
                               <img
                                 src={item.logo}
