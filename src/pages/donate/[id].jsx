@@ -161,7 +161,7 @@ export default function Donate() {
                 >
                   {details && (
                     <>
-                      <motion.div className="bg-white p-4 lg:p-5 py-7 rounded-[12px] flex flex-col flex-grow h-full">
+                      <motion.div className="bg-white p-4 lg:p-5 py-7 rounded-[12px] flex flex-col flex-grow !h-full">
                         <p className="text-[#4D4D4D] text-[18px] lg:text-[16px] xl:text-[16px] leading-7 lg:leading-10">
                           {details.name}
                         </p>
