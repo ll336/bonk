@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import NavBar from "@/components/layout/navbar";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Separator } from "@/components/ui/separator";
-import { cn } from "@/lib/utils";
+import { cn, useWindowSize } from "@/lib/utils";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
@@ -25,7 +25,8 @@ export default function Shop() {
   const [selected, setSelected] = useState(null);
   const [dropDown, setDropDown] = useState(false)
 
-
+  const windowSize = useWindowSize()
+  const shouldApplyScroll = windowSize.height <= 900
 
   const handleSearchChange = (event) => {
     const inputValue = event.target.value;
@@ -209,7 +210,7 @@ export default function Shop() {
                   </div>
                 </div>
 
-                <div className="flex flex-col justify-between items-center mt-8 lg:mt-0 w-full flex-grow gap-5">
+                <div className={`flex flex-col justify-between items-center mt-8 lg:mt-0 w-full flex-grow ${shouldApplyScroll ? "gap-5" : "gap-20"}`}>
                 <div className="w-full flex flex-col px-6"> {/* Loaction dropdown */}
                           <p className="text-[16px] text-white">Location</p>
                           <div className="relative">
@@ -253,7 +254,7 @@ export default function Shop() {
                   </div>
                 </div>
               </div>
-              <div className="mt-4">
+              <div className="mt-4 mb-5 lg:mb-0">
                 <Image
                   src="/givingblock.png"
                   width={130}
@@ -288,16 +289,16 @@ export default function Shop() {
                   </div>
                 </>
               ) : (
-                <ScrollArea className="w-full lg:h-[calc(100vh-100px)]  pb-64 lg:pb-4 lg:mb-5">
-                  <div className="flex justify-start items-center gap-3 px-4 pb-2">
+                <ScrollArea className="w-full h-full lg:h-[calc(100vh-100px)]  lg:pb-4 lg:mb-5">
+                  <div className="flex justify-start items-center gap-3 px-6 pb-2">
                   <span className="text-[26px] font-bold uppercase text-white">Charity</span>
-                  <Separator className=" bg-[#FFFFFF] my-3" />
+                  <hr className="bg-[#FFFFFF] my-3 h-[1px] w-full" />
                   </div>
                   <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1 }}
-                    className="p-3 grid xs:grid-cols-1 grid-cols-2 sm:grid-cols-3 xl:grid-cols-3  3xl:grid-cols-4 gap-5 gap-y-6 pb-[30px]">
+                    className="py-3 px-6 grid xs:grid-cols-1 grid-cols-2 sm:grid-cols-3 xl:grid-cols-3  3xl:grid-cols-4 gap-5 gap-y-6 pb-[30px]">
                     {filteredData && filteredData.length > 0 && (
                       <>
                         {filteredData.map((item, index) => (

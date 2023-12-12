@@ -4,7 +4,7 @@ import { Command } from "@/components/ui/command";
 import { AnimatePresence, motion } from "framer-motion";
 import NavBar from "@/components/layout/navbar";
 import { Separator } from "@/components/ui/separator";
-import { cn } from "@/lib/utils";
+import { cn, useWindowSize } from "@/lib/utils";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
@@ -17,7 +17,8 @@ import { filteredDatas, categories } from "@/constants";
 
 export default function Organization() {
   const router = useRouter();
-
+  const windowSize = useWindowSize()
+  const shouldApplyScroll = windowSize.height <= 900
   const [details, setDetails] = useState();
   const [searchTerm, setSearchTerm] = useState("");
   const [openFilterMobile, setOpenFilterMobile] = useState(false);
@@ -174,7 +175,8 @@ export default function Organization() {
                   </div>
                 </div>
 
-                <div className="flex flex-col justify-between items-center mt-8 lg:mt-0 w-full flex-grow gap-5">
+                <div className={`flex flex-col justify-between items-center mt-8 lg:mt-0 w-full flex-grow ${shouldApplyScroll ? "gap-5" : "gap-20"}`}>
+
                   <div className="w-full flex flex-col px-6 opacity-50">
                     {" "}
                     {/* Loaction dropdown */}
