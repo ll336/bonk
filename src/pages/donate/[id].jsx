@@ -126,7 +126,7 @@ export default function Donate() {
         )}>
         <NavBar />
         <div
-          className={`lg:px-12 pb-3 pt-4 w-full ${
+          className={`lg:px-12 pb-3 pt-4 w-full h-full ${
             (windowSize.width > 1024 && windowSize.height <= 730)
               ? "lg:h-full"
               : "lg:h-[calc(100vh-112px)]"
