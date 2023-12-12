@@ -95,7 +95,10 @@ export default function Donate() {
         <meta name="theme-color" content="#ffffff" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <div className={cn(`lg:h-screen font-g8 bodybg`)}>
+      <div
+        className={cn(
+          `lg:h-screen font-g8 bodybg`
+        )}>
         <NavBar />
         <div
           className={`lg:px-12 pb-3 pt-4 w-full ${
