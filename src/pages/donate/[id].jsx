@@ -24,6 +24,12 @@ export default function Donate() {
   const windowSize = useWindowSize();
   const [tab, setTab] = useState(1)
   const [anonymous, setAnonymous] = useState(false)
+  const [form, setForm] = useState({
+    name: null,
+    lastname:null,
+    email:null,
+
+  })
 
   useEffect(() => {
     const handler = setTimeout(() => {
@@ -119,13 +125,7 @@ export default function Donate() {
           `lg:h-screen font-g8 bodybg`
         )}>
         <NavBar />
-        <div
-          className={`lg:px-12 pb-3 pt-4 w-full ${
-            windowSize.width > 1024 && windowSize.height <= 730
-              ? "lg:h-full"
-              : "lg:h-[calc(100vh-112px)]"
-          } flex flex-col relative`}
-        >
+        <div className={`lg:px-12 pb-[38px] lg:pb-3 pt-4 w-full ${(windowSize.width > 1024 && windowSize.height <= 730) ? "lg:h-full" : "lg:h-[calc(100vh-112px)]"} flex flex-col relative`}>
           <div className="h-full w-full py-2 flex justify-between lg:flex-row flex-col">
             <Sidebar />
             <div
@@ -381,7 +381,7 @@ export default function Donate() {
 
                         <div className="relative mt-4 ">
                           <input
-                            disabled={inputDisable}
+                            disabled={anonymous}
                             type="text"
                             className="w-full py-2 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[14px] bg-[#F7F7F7] placeholder:text-[#4D4D4D]"
                             value={amount}
