@@ -66,8 +66,8 @@ export default function Organization() {
         <NavBar />
         <div className=" lg:px-12 pb-3 pt-4 w-full lg:h-[calc(100vh-112px)] flex flex-col relative">
           <div className="h-full w-full py-2 flex justify-between lg:flex-row flex-col">
-            <div className=" flex-col justify-between items-center lg:h-[calc(100vh-162px)] lg:flex hidden">
-              <div className="filterbg py-6 border-[#F0A724] rounded-[12px]  w-[95%] overflow-hidden flex flex-col justify-between items-center h-full lg:w-[330px] 2xl:w-full">
+            <div className=" flex-col justify-between items-center lg:h-[calc(100vh-162px)] xl:flex hidden">
+              <div className="filterbg py-6 border-[#F0A724] rounded-[12px]  w-[95%] overflow-hidden flex flex-col justify-between items-center h-full lg:w-[300px] 2xl:w-full">
                 <div className="flex flex-col h-full max-h-full overflow-y-auto w-full gap-4 lg:gap-0 flex-grow-0 opacity-50 mb-3 px-6">
                   <div className=" flex items-center justify-between whitespace-nowrap gap-[30px]  w-full ">
                     <Command className="lg:block rounded-lg border mb-4 bg-[#FFBD48] border-[#F0A724]">
@@ -267,14 +267,14 @@ export default function Organization() {
                         <div className="flex lg:flex-row flex-col justify-between items-start gap-5 xl:gap-20">
                           <div className="flex-grow">
                             <p
-                              className={`text-[14px] xl:text-[16px] font-normal text-[#AAA] mb-3`}
+                              className={`text-[13px] 2xl:text-[16px] font-normal text-[#AAA] mb-3`}
                             >
                               {details.description}
                             </p>
 
 
-                            <div className="border-[#E9E9E9] rounder-[10px] w-full">
-                              <p>Learn More</p>
+                            <div className="border-[#E9E9E9] border-[2px]  rounded-[10px] w-full p-5 max-w-[550px]">
+                              <p className="text-[#757575] font-bold text-[13px]">Learn More</p>
 
                             </div>
                           </div>
@@ -290,7 +290,7 @@ export default function Organization() {
 
                               <hr className="bg-[#E9E9E9] my-3 h-[2px] w-full" />
 
-                              <p className="text-center text-[18px] font-[500] text-[#4D4D4D]">
+                              <p className="text-center text-[15px] 2xl:text-[18px] font-[500] text-[#4D4D4D]">
                                 Country:{" "}
                                 <span className="uppercase font-bold">
                                   {details.country}

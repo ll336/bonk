@@ -111,7 +111,7 @@ export default function Shop() {
           <div className="h-full w-full py-2 flex justify-between lg:flex-row flex-col">
             
             <div className="flex flex-col justify-between items-center lg:h-[calc(100vh-162px)]">
-              <div className="filterbg py-6 border-[#F0A724] rounded-[12px] w-[95%] overflow-hidden flex flex-col justify-between items-center h-full lg:w-[330px] 2xl:w-full">
+              <div className="filterbg py-6 border-[#F0A724] rounded-[12px] w-[95%] overflow-hidden flex flex-col justify-between items-center h-full lg:w-[300px] 2xl:w-full">
                 <div className="flex flex-col h-full max-h-full overflow-y-auto w-full gap-4 lg:gap-0 flex-grow-0  mb-3 px-6">
                   <div className=" flex items-center justify-between whitespace-nowrap gap-[30px]  w-full ">
                     <Command className="lg:block rounded-lg border mb-4 bg-[#FFBD48] border-[#F0A724]">
