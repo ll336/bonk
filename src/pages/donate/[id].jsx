@@ -24,6 +24,7 @@ export default function Donate() {
   const windowSize = useWindowSize();
   const [tab, setTab] = useState(1)
   const [anonymous, setAnonymous] = useState(false)
+  const [errorBorder, setErrorBorder] = useState([])
   const [form, setForm] = useState({
     name: null,
     lastname:null,
@@ -34,6 +35,8 @@ export default function Donate() {
     city:null
   })
 
+
+
   useEffect(() => {
     const handler = setTimeout(() => {
       setDebouncedAmount(amount);
@@ -43,6 +46,68 @@ export default function Donate() {
       clearTimeout(handler);
     };
   }, [amount]);
+
+  const validateForm = () => {
+    const errors = {};
+    const check = []
+  
+    if (!form.name) {
+      errors.name = "Name is required";
+      check.push("name")
+    }
+  
+    if (!form.lastname) {
+      errors.lastname = "Last name is required";
+      check.push("lastname")
+    }
+  
+   if (!/\S+@\S+\.\S+/.test(form.email) && form.email && form.email !== null) {
+      errors.email = "Email is invalid";
+      check.push("email")
+    }
+  
+    if (!form.country) {
+      errors.country = "Country is required";
+      check.push("country")
+    }
+  
+    if (!form.state) {
+      errors.state = "State is required";
+      check.push("state")
+    }
+  
+    if (!form.city) {
+      errors.city = "City is required";
+      check.push("city")
+    }
+
+    setErrorBorder(check)
+  
+    return errors;
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if(!anonymous){
+
+        const errors = validateForm();
+        
+  
+        if (Object.keys(errors).length === 0) {
+          setTab(3)
+        } 
+    }else{
+    
+            if (!/\S+@\S+\.\S+/.test(form.email) && form.email !== null && form.email) {
+                setErrorBorder(["email"])
+              }else{
+               setTab(3)
+              }
+        
+       
+    }
+    
+  }
 
   const handleChange = async (event) => {
     const newValue = event.target.value;
@@ -393,7 +458,7 @@ export default function Donate() {
                             disabled={anonymous}
                             type="text"
                             placeholder="First name*"
-                            className="w-full py-3 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
+                            className={`${errorBorder.includes("name") && "border-[#FE0B37] border-[1px]"} w-full py-3 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]`}
                             value={form.name}
                             onChange={(e) => {setForm({...form, name: e.target.value})}}
                           />
@@ -401,7 +466,7 @@ export default function Donate() {
                             disabled={anonymous}
                             type="text"
                             placeholder="Last name*"
-                            className="w-full py-3 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
+                            className={`${errorBorder.includes("lastname") && "border-[#FE0B37] border-[1px]"} w-full py-3 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]`}
                             value={form.lastname}
                             onChange={(e) => {setForm({...form, lastname: e.target.value})}}
                           />
@@ -426,7 +491,7 @@ export default function Donate() {
                             disabled={anonymous}
                             type="text"
                             placeholder="Country*"
-                            className="w-full py-3 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
+                            className={`${errorBorder.includes("country") && "border-[#FE0B37] border-[1px]"} w-full py-3 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]`}
                             value={form.country}
                             onChange={(e) => {setForm({...form, country: e.target.value})}}
                           />
@@ -434,7 +499,7 @@ export default function Donate() {
                             disabled={anonymous}
                             type="text"
                             placeholder="State/Provin...*"
-                            className="w-full py-3 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
+                            className={`${errorBorder.includes("state") && "border-[#FE0B37] border-[1px]"} w-full py-3 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]`}
                             value={form.state}
                             onChange={(e) => {setForm({...form, state: e.target.value})}}
                           />
@@ -446,7 +511,7 @@ export default function Donate() {
                             disabled={anonymous}
                             type="text"
                             placeholder="City*"
-                            className="w-full py-3 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
+                            className={`${errorBorder.includes("city") && "border-[#FE0B37] border-[1px]"} w-full py-3 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]`}
                             value={form.city}
                             onChange={(e) => {setForm({...form, city: e.target.value})}}
                           />
@@ -465,7 +530,7 @@ export default function Donate() {
                         
                             type="text"
                             placeholder="Email"
-                            className="w-full py-3 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
+                            className={`${errorBorder.includes("email") && "border-[#FE0B37] border-[1px]"} w-full py-3 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]`}
                             value={form.email}
                             onChange={(e) => {setForm({...form, email: e.target.value})}}
                           />
@@ -476,7 +541,7 @@ export default function Donate() {
 
                             <div className="flex justify-center mt-5">
                             <button 
-                          onClick={() => setTab(3)}
+                          onClick={(e) => {handleSubmit(e)}}
                           className="w-full bg-[#4C81FF] rounded-[10px] gap-3 py-3 my-1 text-white font-[500] flex justify-center items-center max-w-[300px]">
                            
                             <span className="text-[13px]">Next</span>
@@ -487,6 +552,23 @@ export default function Donate() {
                     
 
 
+                        }
+
+                        {tab == 3
+                        &&
+
+                        <motion.div
+                        initial={{opacity:0}}
+                        animate={{opacity:1}}
+                        >
+
+
+
+
+                        </motion.div>
+                        
+                        
+                        
                         }
 
                           
