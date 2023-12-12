@@ -12,7 +12,7 @@ import {
 import { filteredDatas, categories } from "@/constants";
 import Sidebar from "@/components/sidebar/Sidebar";
 
-export default function Organization() {
+export default function Donate() {
   const router = useRouter();
   const [details, setDetails] = useState();
 

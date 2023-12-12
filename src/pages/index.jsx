@@ -13,13 +13,13 @@ import { useRouter } from "next/router";
 import { RiArrowDropDownLine, RiArrowDropUpLine  } from "react-icons/ri";
 import { filteredDatas, categories } from "@/constants";
 
-export default function Shop() {
+export default function Home() {
   const [openFilterMobile, setOpenFilterMobile] = useState(false);
   const [filteredData, setFilterData] = useState(filteredDatas);
   const [shopData, setShopData] = useState(filteredDatas);
   const [category, setCategory] = useState(categories);
   const [selectedType, setSelectedTypes] = useState([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const router = useRouter();
   const [searchTerm, setSearchTerm] = useState("");
   const [selected, setSelected] = useState(null);
@@ -67,6 +67,12 @@ export default function Shop() {
     setFilterData(filtered);
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    },1500)
+
+  }, [])
 
   useEffect(() => {
     if(selectedType.length > 0 || searchTerm){
@@ -255,6 +261,7 @@ export default function Shop() {
                 </div>
               </div>
               <div className="mt-4 mb-5 lg:mb-0">
+                <a href="https://thegivingblock.com/" target="_blank">
                 <Image
                   src="/givingblock.png"
                   width={130}
@@ -263,6 +270,7 @@ export default function Shop() {
                   unoptimized="true"
                   priority="true"
                 />
+                </a>
               </div>
             </div>
             <div className="h-screen rounded-2xl flex flex-grow flex-col w-full">
