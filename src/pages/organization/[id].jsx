@@ -9,12 +9,12 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import Head from "next/head";
-import { RiArrowDropDownLine, RiArrowDropUpLine  } from "react-icons/ri";
+import { RiArrowDropDownLine, RiArrowDropUpLine, RiArrowLeftSLine   } from "react-icons/ri";
 import { filteredDatas, categories } from "@/constants";
 
 export default function Organization() {
   const router = useRouter()
-  const id = router.query.slug
+
   const [details, setDetails] = useState();
   const [searchTerm, setSearchTerm] = useState("");
   const [openFilterMobile, setOpenFilterMobile] = useState(false);
@@ -25,10 +25,9 @@ export default function Organization() {
   const [dropDown, setDropDown] = useState(false)
 
   useEffect(() => {
-    const data = filteredDatas.find(item => item.id == id)
-    console.log(data)
+    const data = filteredDatas.find(item => item.id == router.query.id)
     setDetails(data)
-  }, [])
+  }, [router.query.id])
   return(
   <>
   <Head>
@@ -63,7 +62,7 @@ export default function Organization() {
     <div className=" lg:px-12 pb-3 pt-4 w-full lg:h-[calc(100vh-112px)] flex flex-col relative">
       <div className="h-full w-full py-2 flex justify-between lg:flex-row flex-col">
         
-        <div className="flex flex-col justify-between items-center lg:h-[calc(100vh-162px)]">
+        <div className=" flex-col justify-between items-center lg:h-[calc(100vh-162px)] lg:flex hidden">
           <div className="filterbg py-6 border-[#F0A724] rounded-[12px]  w-[95%] overflow-hidden flex flex-col justify-between items-center h-full lg:w-[330px] 2xl:w-full">
             <div className="flex flex-col h-full max-h-full overflow-y-auto w-full gap-4 lg:gap-0 flex-grow-0 opacity-50 mb-3 px-6">
               <div className=" flex items-center justify-between whitespace-nowrap gap-[30px]  w-full ">
@@ -213,43 +212,62 @@ export default function Organization() {
             />
           </div>
         </div>
-        <div className="h-screen rounded-2xl flex flex-grow flex-col w-full">
-            <ScrollArea className="w-full lg:h-[calc(100vh-100px)]  pb-64 lg:pb-4 lg:mb-5 px-6">
-              <div className="flex justify-start items-center gap-3 pb-2 ">
+        <div className="h-full rounded-2xl w-full overflow-x-hidden lg:overflow-hidden px-6">
+            <div className="w-full flex flex-col h-full  pb-64 lg:pb-4 lg:mb-5">
+              <div className="flex justify-start items-center flex-grow-0 max-h-full max-w-full gap-3 pb-2 ">
+            <div className='flex justify-start items-center flex-grow-0 max-w-full'>
+              <RiArrowLeftSLine className='text-[28px] text-white cursor-pointer' onClick={() => router.push('/')}/>
               <span className="text-[26px] font-bold uppercase text-white">Detail</span>
-              <Separator className=" bg-[#FFFFFF] my-3" />
+              </div>
+              <hr className="bg-[#FFFFFF] my-3 h-[1px] w-full" />
               </div>
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1 }}
-                className="w-full bg-white rounded-[12px]">
+                className="w-full bg-white rounded-[12px] flex-grow">
                 {details && (
                   <>
                     
                       <motion.div
                         
                         
-                        className="bg-white p-10 rounded-[12px]  "
+                        className="bg-white p-10 rounded-[12px] flex flex-col flex-grow h-full"
                         >
-                        <div className="flex justify-center w-full">
-                         
-                        </div>
+                   
                        
-                        <p className="text-[#4D4D4D] text-[18px] leading-5 mb-2">
+                        <p className="text-[#4D4D4D] text-[26px] leading-5 mb-2">
                           {details.name}
                         </p>
-                        <p
+
+                        <hr className="bg-[#E9E9E9] my-5 h-[2px] w-full" />
+
+
+                        <div className='flex lg:flex-row flex-col justify-between items-start gap-20'>
+                            <div className='flex-grow'>
+                            <p
                           className={`text-[16px] font-normal text-[#AAA]`}>
-                          {details.shortDescription}
+                          {details.description}
                         </p>
+
+                            </div>
+
+                            <div className='flex-grow-0 flex-shrink-0 max-h-full'>
+                                <div className='border-[#E9E9E9] border-[2px] rounded-[12px] p-10'>
+                                    <img src={details.logo} width={200} height={200} alt="/" />
+                                
+                                <hr className="bg-[#E9E9E9] my-3 h-[2px] w-full" />
+                                </div>
+                            </div>
+                        </div>
+                       
                         
                       </motion.div>
                    
                   </>
                 )}
               </motion.div>
-            </ScrollArea>
+            </div>
        
         </div>
       </div>

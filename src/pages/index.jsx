@@ -1,8 +1,6 @@
 "use client";
 
-import { Button } from "@/components/ui/button";
 import { Command } from "@/components/ui/command";
-import { Icons } from "@/components/ui/icons";
 import { AnimatePresence, motion } from "framer-motion";
 import NavBar from "@/components/layout/navbar";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -304,6 +302,7 @@ export default function Shop() {
                       <>
                         {filteredData.map((item, index) => (
                           <motion.div
+                          onClick={() => router.push(`/organization/${item.id}`)}
                             whileHover={{
                               y: -5.5,
                               transition: { duration: 0.2 },
@@ -314,7 +313,7 @@ export default function Shop() {
                             onHoverEnd={() => {
                               setSelected(null);
                             }}
-                            className="bg-white p-5 rounded-[12px] relative"
+                            className="bg-white p-5 rounded-[12px] relative cursor-pointer"
                             key={item.id}>
                             <div className="flex justify-center w-full">
                               <img
@@ -339,6 +338,7 @@ export default function Shop() {
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
                                 transition={{ duration: 0.5 }}
+                                onClick={() => router.push(`/organization/${item.id}`)}
                                 className="absolute -bottom-[20px] left-[10px] cursor-pointer z-[9999]">
                                 <div className="flex justify-between items-center rounded-[7px] bg-white border-[#FFD48E] border-[2px]">
                                   <Image
