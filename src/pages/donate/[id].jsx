@@ -28,7 +28,10 @@ export default function Donate() {
     name: null,
     lastname:null,
     email:null,
-    
+    address:null,
+    country: null,
+    state:null,
+    city:null
   })
 
   useEffect(() => {
@@ -126,7 +129,7 @@ export default function Donate() {
         )}>
         <NavBar />
         <div
-          className={`lg:px-12 pb-3 pt-4 w-full h-screen ${
+          className={`lg:px-12 pb-3 pt-4 w-full ${
             (windowSize.width > 1024 && windowSize.height <= 730)
               ? "lg:h-full"
               : "lg:h-[calc(100vh-112px)]"
@@ -161,7 +164,7 @@ export default function Donate() {
                 >
                   {details && (
                     <>
-                      <motion.div className="bg-white p-4 lg:p-5 py-7 rounded-[12px] flex flex-col flex-grow !h-full">
+                      <motion.div className="bg-white p-4 lg:p-5 py-7 rounded-[12px] flex flex-col flex-grow">
                         <p className="text-[#4D4D4D] text-[18px] lg:text-[16px] xl:text-[16px] leading-7 lg:leading-10">
                           {details.name}
                         </p>
@@ -382,82 +385,108 @@ export default function Donate() {
                           </p>
                         </button>
 
-                        <div className="relative mt-4 ">
+                            {!anonymous
+                            &&
+                            <>
+                              <div className=" mt-4 flex justify-center gap-4">
                           <input
                             disabled={anonymous}
                             type="text"
-                            className="w-full py-2 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[14px] bg-[#F7F7F7] placeholder:text-[#4D4D4D]"
-                            value={amount}
-                            onChange={(e) => handleChange(e)}
+                            placeholder="First name*"
+                            className="w-full py-4 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
+                            value={form.name}
+                            onChange={(e) => {setForm({...form, name: e.target.value})}}
                           />
-
-                          {rate !== 0 && (
-                            <motion.p
-                              initial={{ opacity: 0 }}
-                              animate={{ opacity: 1 }}
-                              transition={{ duration: 0.5 }}
-                              className="absolute right-4 top-1/2 py-4 mb-0 -translate-y-[50%] text-[#B8B8B8] font-[500] text-[14px] "
-                            >
-                              ≈ ${(debouncedAmount * rate).toFixed(2)}
-                            </motion.p>
-                          )}
+                            <input
+                            disabled={anonymous}
+                            type="text"
+                            placeholder="Last name*"
+                            className="w-full py-4 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
+                            value={form.lastname}
+                            onChange={(e) => {setForm({...form, lastname: e.target.value})}}
+                          />
+                        
                         </div>
 
-                        <div className="bg-[#F7F7F7] mt-4 rounded-[11px] p-3  w-full flex justify-start items-center border-[#F7F7F7] border-[3px]">
-                          <div className="flex flex-col gap-3 w-full">
-                            <p className="text-[#4D4D4D] text-[12px] lg:text-[12px] font-bold whitespace-nowrap">
-                              Donation Summary
-                            </p>
-
-                            <div className="flex justify-between items-center w-full">
-                              <p className="text-[#4D4D4D]  text-[12px] lg:text-[12px] font-medium">
-                                Donation Summary
-                              </p>
-                              <p className="text-[#4D4D4D]  text-[12px] lg:text-[12px] font-medium">
-                                {debouncedAmount} SOL
-                              </p>
-                            </div>
-                            <div className="flex justify-between items-center w-full">
-                              <p className="text-[#4D4D4D]  text-[12px] lg:text-[12px] font-medium">
-                                Burn
-                              </p>
-                              <p className="text-[#FE0B37]  text-[12px] lg:text-[12px] font-medium">
-                              ≈ -{bonk.toFixed(2)} BONK
-                              </p>
-                            </div>
-                            {Number(debouncedAmount) >= Number(threshold) && Number(debouncedAmount) !== 0
-                            &&
-                            <>
-                                
-                            </>
+                        <div className=" mt-4 flex justify-center gap-4">
+                          <input
+                            disabled={anonymous}
+                            type="text"
+                            placeholder="Email*"
+                            className="w-full py-4 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
+                            value={form.email}
+                            onChange={(e) => {setForm({...form, email: e.target.value})}}
+                          />
+                           
                         
+                        </div>
+
+                        <div className=" mt-4 flex justify-center gap-4">
+                          <input
+                            disabled={anonymous}
+                            type="text"
+                            placeholder="Address"
+                            className="w-full py-4 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
+                            value={form.address}
+                            onChange={(e) => {setForm({...form, address: e.target.value})}}
+                          />
+                        
+                        </div>
+
+                        <div className=" mt-4 flex justify-center gap-4">
+                          <input
+                            disabled={anonymous}
+                            type="text"
+                            placeholder="Country*"
+                            className="w-full py-4 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
+                            value={form.country}
+                            onChange={(e) => {setForm({...form, country: e.target.value})}}
+                          />
+                            <input
+                            disabled={anonymous}
+                            type="text"
+                            placeholder="State/Provin...*"
+                            className="w-full py-4 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
+                            value={form.state}
+                            onChange={(e) => {setForm({...form, state: e.target.value})}}
+                          />
+                        
+                        </div>
+
+                        <div className=" mt-4 flex justify-center gap-4">
+                          <input
+                            disabled={anonymous}
+                            type="text"
+                            placeholder="City*"
+                            className="w-full py-4 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
+                            value={form.city}
+                            onChange={(e) => {setForm({...form, city: e.target.value})}}
+                          />
+                        
+                        </div>
+                            </>
                             
                             
                             }
-
-                            
-                            <hr className="h-[2px] my-1 bg-[#EBEBEB] text-[#EBEBEB]"/>
-                            <div className="flex justify-between items-center w-full">
-                              <p className="text-[#4D4D4D]  text-[12px] lg:text-[12px] font-bold">
-                              Charity Recieving
-                              </p>
-                              <p className="text-[#4D4D4D]  text-[12px] lg:text-[12px] font-medium">
-                                {debouncedAmount} SOL
-                              </p>
-                            </div>
+                      
 
                         
-                            
-                          </div>
+                        <div className=" mt-4 ">
+                            <p className="text-[#4D4D4D] text-[13px] font-bold my-2">Want a tax receipt?</p>
+                          <input
+                        
+                            type="text"
+                            placeholder="Email"
+                            className="w-full py-4 rounded-[11px] px-3 focus:outline-none text-[#4D4D4D] text-[12px] bg-[#F7F7F7] placeholder:text-[#B8B8B8]"
+                            value={form.taxemail}
+                            onChange={(e) => {setForm({...form, taxemail: e.target.value})}}
+                          />
+                        
                         </div>
-                        <div className="w-full py-5">
-                                <p className="text-[#B8B8B8] text-[10px] font-normal">The smart contract will burn 1% of the value of the user&#39;s donation from the BONK pool to support token deflation.</p>
-                                <p className="text-[#B8B8B8] text-[10px] font-normal  mt-1">If a donor contributes $10 or more, the smart contract matches it in BONK, converting BONK to USDC/USDT on ERC20 or SOL on SPL.</p>
 
-                                
-                            </div>
+                     
 
-                            <div className="flex justify-center">
+                            <div className="flex justify-center mt-5">
                             <button 
                           onClick={() => setTab(3)}
                           className="w-full bg-[#4C81FF] rounded-[10px] gap-3 py-3 my-1 text-white font-[500] flex justify-center items-center max-w-[300px]">
