@@ -18,7 +18,7 @@ export default function Donate() {
 
   const ref = useRef(null);
   const router = useRouter();
-  const [threshold, setThreshold] = useState(0.4)
+  const [threshold, setThreshold] = useState(0.04)
   const [url, setUrl] = useState(null)
   const [details, setDetails] = useState();
   const [amount, setAmount] = useState(0);
@@ -149,16 +149,17 @@ export default function Donate() {
 
                 setInputDisable(false);
 
+
+                const url = `https://quote-api.jup.ag/v6/quote?inputMint=So11111111111111111111111111111111111111112&outputMint=DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263&amount=${debouncedAmount*1000000000}`
+
                 const res1 = await fetch(
-                    `https://api.coingecko.com/api/v3/simple/price?ids=bonk&vs_currencies=usd`
+                    url
                   );
                   const data1 = await res1.json();
                   if (data1) {
-                    const bonk = data1?.bonk?.usd
-                    const covert = data?.solana?.usd / bonk
-                    const result = debouncedAmount * covert * 0.01
+                    const result = data1.outAmount / 100000 * 0.01
                     setBonk(result)
-                    setBonkMatch(debouncedAmount * covert)
+                    setBonkMatch(result / 0.01)
                   }
               }
         
