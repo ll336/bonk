@@ -182,7 +182,7 @@ export default function Donate() {
   return (
     <>
       <Head>
-        <title>THE GIVING BONK</title>
+        <title>The Giving Bonk</title>
         <meta name="description" content="Create a fun way to utilize bonk while giving back" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link
