@@ -141,11 +141,11 @@ export default function Donate() {
       const fetchBonk = async () => {
         try {
             const res = await fetch(
-                `https://api.coingecko.com/api/v3/simple/price?ids=solana&vs_currencies=usd`
+                `https://quote-api.jup.ag/v6/quote?inputMint=So11111111111111111111111111111111111111112&outputMint=EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v&amount=${debouncedAmount*1000000000}`
               );
               const data = await res.json();
               if (data) {
-                setRate(Number(data?.solana?.usd));
+                setRate(Number(data?.outAmount / 1000000));
 
                 setInputDisable(false);
 
