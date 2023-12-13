@@ -51,7 +51,7 @@ export const filteredDatas = [
       name: "Semper K9 Assistance Dogs",
       logo: "https://static.tgbwidget.com/organization_logo%2F05936f18-3557-4fb0-9e55-487c47444466.jpg",
       country: "USA",
-      shortDescription: `Service Dogs for Veterans`,
+      shortDescription: `Service Dogs for Veterans.`,
       description: `Combat veteran founded and operated, Semper K9's mission is to enhance the quality of lifefor wounded members of the U.S.Armed Forces and their families by providing them custom - trained service dogs. Using rescued and donated dogs Semper K9 provides service dogs for psychiatric alert and mobility challenges free of charge to disabled veterans.`,
       categories: "dog",
       website: "http: //www.semperk9.org/"
@@ -62,7 +62,7 @@ export const filteredDatas = [
         name: "Heaven on Earth - Cat Rescue",
         logo: "https://static.tgbwidget.com/organization_logo%2F9f424a01-7602-4a38-8520-a10eb5b5e0a9.jpeg",
         country: "USA",
-        shortDescription: "Addressing the cat overpopulation crisis in Los Angeles",
+        shortDescription: "Addressing the cat overpopulation crisis in Los Angeles.",
         description: "We save cats and kittens in Los Angeles! Our mission is to transform the lives of homeless cats through rescue, sanctuary, and new beginnings. For 21+ years, with support from people just like you, we've rescued thousands of cats and kittens from overcrowded Los Angeles area shelters and directly from the streets.",
         categories: "cat",
         website: "https://heavenlypets.org/"
@@ -73,7 +73,7 @@ export const filteredDatas = [
         name: "Endeavor Therapeutic Horsemanship",
         logo: "https://static.tgbwidget.com/organization_logo%2Fd2b6e219-5e7e-42f2-b120-ae38c3518515.jpeg",
         country: "USA",
-        shortDescription: "Empower individuals with special needs by providing the highest quality equine",
+        shortDescription: "Empower individuals with special needs by providing the highest quality equine.",
         description: "Endeavor Therapeutic Horsemanship Inc.'s mission is to empower individuals with a broad range of needs by providing the highest quality equine-assisted services in an inclusive and welcoming environment. Equine assisted services is an industry that refers to services in which professionals incorporate horses to benefit people.Looking to leverage the healing power of the horse in service to the most disadvantaged children and adults, Endeavor offers a wide range of programs and services meant to generate meaningful outcomes that improve both participant functioning, as well as their quality of life.Founded in 2014, Endeavor provides programs to Veterans, At Risk Youth, and Children and Adults with Disabilities.",
         categories: "horse",
         website: "http: //www.endeavorth.org/"

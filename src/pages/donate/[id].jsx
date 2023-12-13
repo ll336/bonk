@@ -145,7 +145,7 @@ export default function Donate() {
               );
               const data = await res.json();
               if (data) {
-                setRate(Number(data?.outAmount / 1000000));
+                setRate(Number(data?.outAmount) / 1000000);
 
                 setInputDisable(false);
 
@@ -280,7 +280,7 @@ export default function Donate() {
                         }
                               
                               <p className={`${(tab == 1 || tab == 2 || tab == 3) ? "text-[#4D4D4D]" : "text-[#B8B8B8]"}`}>
-                                Select a currency
+                                Select a Currency
                               </p>
                             </div>
                             <div className="flex justify-start gap-4">
@@ -305,7 +305,7 @@ export default function Donate() {
                         
                         
                         }
-                              <p className={`${(tab == 2 || tab == 3) ? "text-[#4D4D4D]" : "text-[#B8B8B8]"}`}>Personal Info</p>
+                              <p className={`${(tab == 2 || tab == 3) ? "text-[#4D4D4D]" : "text-[#B8B8B8]"}`}>Personal Information</p>
                             </div>
                             <div className="flex justify-start gap-4">
                             {tab == 3 ?
@@ -329,7 +329,7 @@ export default function Donate() {
                         
                         
                         }
-                              <p className={`${tab == 3 ? "text-[#4D4D4D]" : "text-[#B8B8B8]"}`}>Start Over</p>
+                              <p className={`${tab == 3 ? "text-[#4D4D4D]" : "text-[#B8B8B8]"}`}>Donation</p>
                             </div>
                           </div>
                         
@@ -368,7 +368,7 @@ export default function Donate() {
                                   transition={{ duration: 0.5 }}
                                   className="absolute right-4 top-1/2 py-4 mb-0 -translate-y-[50%] text-[#B8B8B8] font-[500] text-[14px] "
                                 >
-                                  ≈ ${(debouncedAmount * rate).toFixed(2)}
+                                  ≈ ${(rate).toFixed(2)}
                                 </motion.p>
                               )}
                             </div>
@@ -381,7 +381,7 @@ export default function Donate() {
 
                                 <div className="flex justify-between items-center w-full">
                                   <p className="text-[#4D4D4D]  text-[12px] lg:text-[12px] font-medium">
-                                    Donation Summary
+                                    Donation Amount
                                   </p>
                                   <p className="text-[#4D4D4D]  text-[12px] lg:text-[12px] font-medium">
                                     {debouncedAmount} SOL
@@ -389,7 +389,7 @@ export default function Donate() {
                                 </div>
                                 <div className="flex justify-between items-center w-full">
                                   <p className="text-[#4D4D4D]  text-[12px] lg:text-[12px] font-medium">
-                                    Burn
+                                    Burn &#40;1%&#41;
                                   </p>
                                   <p className="text-[#FE0B37]  text-[12px] lg:text-[12px] font-medium">
                                   ≈ -{bonk.toFixed(2)} BONK
