@@ -24,8 +24,8 @@ export default function Organization() {
   return (
     <>
       <Head>
-        <title>Bonk</title>
-        <meta name="description" content="Bonk" />
+      <title>THE GIVING BONK</title>
+        <meta name="description" content="Create a fun way to utilize bonk while giving back" />
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link
           rel="icon"
