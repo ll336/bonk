@@ -24,6 +24,7 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [selected, setSelected] = useState(null);
   const [dropDown, setDropDown] = useState(false)
+  const [selectedCountry, setSelectedCountry] = useState("All");
 
   const windowSize = useWindowSize()
   const shouldApplyScroll = windowSize.height <= 900
@@ -32,7 +33,7 @@ export default function Home() {
   const handleSearchChange = (event) => {
     const inputValue = event.target.value;
     setSearchTerm(inputValue);
-    filterItems(inputValue, selectedType);
+    filterItems(inputValue, selectedType, selectedCountry);
   };
 
   const handleTypeChange = (type) => {
@@ -47,6 +48,11 @@ export default function Home() {
 
   };
   
+  const handleCountryChange = (selectedCountry) => {
+    setDropDown(false)
+    setSelectedCountry(selectedCountry);
+    filterItems(searchTerm, selectedType, selectedCountry);
+  };
 
   const removeTypeChange = (type) => {
     setSelectedTypes((prevTypes) => prevTypes.filter(t => t !== type));
@@ -54,7 +60,7 @@ export default function Home() {
   };
   
 
-  const filterItems = (term, types) => {
+  const filterItems = (term, types, country) => {
     let filtered = shopData.filter((item) =>
       item.name.toLowerCase().includes(term.toLowerCase())
     );
@@ -63,6 +69,10 @@ export default function Home() {
       filtered = filtered.filter((item) => 
         types.some(type => item.categories == type)
       );
+    }
+
+    if (country && country !== "All") {
+      filtered = filtered.filter((item) => item.country === country);
     }
   
     setFilterData(filtered);
@@ -76,13 +86,13 @@ export default function Home() {
   }, [])
 
   useEffect(() => {
-    if(selectedType.length > 0 || searchTerm){
-      filterItems(searchTerm, selectedType);
+    if(selectedType.length > 0 || searchTerm || selectedCountry){
+      filterItems(searchTerm, selectedType, selectedCountry);
     }else{
       setFilterData(filteredDatas)
     }
     
-  }, [selectedType, searchTerm]);
+  }, [selectedType, searchTerm, selectedCountry]);
 
   return (
     <>
@@ -227,7 +237,7 @@ export default function Home() {
                           <button 
                           onClick={() => setDropDown(!dropDown)}
                           className=" mt-3 rounded-[12px] p-[12px] z-[99999] w-full bg-[#FFBD48] border-[#F0A724] text-white flex items-center justify-between">
-                            <span className="text-[14px] font-bold ">By Country</span>{dropDown ?<RiArrowDropUpLine /> : <RiArrowDropDownLine />}
+                            <span className="text-[14px] font-bold ">{selectedCountry == "All" ? <>By Country</> : <>{selectedCountry}</>}</span>{dropDown ?<RiArrowDropUpLine /> : <RiArrowDropDownLine />}
                             </button>
 
                             {dropDown &&
@@ -239,8 +249,10 @@ export default function Home() {
                             exit={{opacity:0,y:-5}}
                             transition={{duration:0.3}}
                             className="absolute z-[99999]  w-full text-[13px] text-white top-[45px] bg-[#FFBD48] py-[15px] pb-[10px] px-[12px] leading-10 rounded-[12px]">
-                                <p className="cursor-pointer">USA</p>
-                                <p className="cursor-pointer">Hong Kong</p>
+                                <p className="cursor-pointer" onClick={() => handleCountryChange('All')}>All</p>
+                                <p className="cursor-pointer" onClick={() => handleCountryChange('USA')}>USA</p>
+                                <p className="cursor-pointer" onClick={() => handleCountryChange('Australia')}>Australia</p>
+                                <p className="cursor-pointer" onClick={() => handleCountryChange('Canada')}>Canada</p>
 
                             </motion.div>
                             </AnimatePresence>
